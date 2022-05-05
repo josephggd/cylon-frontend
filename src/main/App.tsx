@@ -47,6 +47,7 @@ function App() {
           />
         </TwoColumnDiv>
       </header>
+      <StyledLink href={"https://github.com/josephggd/hello-cylon"}>Github</StyledLink>
     </div>
   );
 }
@@ -61,5 +62,10 @@ const TwoColumnDiv = styled.div`
   width: 90%;
 `;
 
+const StyledLink = styled.a`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}`
 
 export default App;
