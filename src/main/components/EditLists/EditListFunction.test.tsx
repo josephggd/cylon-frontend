@@ -4,7 +4,7 @@ import React from "react";
 import {handleSubmit} from "./EditListFunctions";
 
 describe('EditItem', () => {
-  const refresh = false;
+  const refresh = "false";
   const setEditedList = jest.fn();
   const setRefresh = jest.fn();
   // test('runs handleSubmit', () => {

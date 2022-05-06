@@ -6,16 +6,27 @@ import {EditList} from "./components/EditLists/EditList";
 import {getAllToDoLists} from "./api/ApiRequests";
 import {handleSubmit} from "./components/EditLists/EditListFunctions";
 
+// function equals(a: ToDoList[], b: ToDoList[]): boolean {
+//   if (a.length === b.length) {
+//     return a.every((v: ToDoList, i: number) => v.id === b[i].id);
+//   }
+//   return false;
+// }
 function App() {
-  const [refresh, setRefresh] = React.useState(true);
+  const [refresh, setRefresh] = React.useState("initial");
   const [lists, setLists] = React.useState<ToDoList[]>([]);
   const [selectedList, setSelectedList] = React.useState<ToDoList>(blankList);
   const [showInput, setShowInput] = React.useState(false);
 
   useEffect(() => {
-    getAllToDoLists().then((response) => {
-      return response.toDoLists;
-    }).then(setLists);
+    if (refresh=="initial") {
+      getAllToDoLists().then((response) => {
+        return response.toDoLists;
+      }).then((toDoLists) => {
+        setLists(toDoLists);
+      });
+      setRefresh("secondary");
+    }
   }, [refresh]);
 
   return (

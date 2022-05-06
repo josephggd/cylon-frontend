@@ -1,7 +1,6 @@
 import React from "react";
 import {EditListProps} from "./EditListProps";
 import {blankList} from "../../../dtos/ToDoList";
-// import {ToDoItem} from "../../../dtos/ToDoItem";
 import {EditItem} from "../EditItem/EditItem";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
