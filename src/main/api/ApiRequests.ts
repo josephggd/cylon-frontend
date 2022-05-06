@@ -1,4 +1,3 @@
-import axios from "axios";
 import {ToDoList} from "../../dtos/ToDoList";
 import {ToDoListJson} from "../../jsons/ToDoListJson";
 import {ToDoItem} from "../../dtos/ToDoItem";
@@ -16,22 +15,22 @@ export const putItemUrl = baseUrl + "update/item";
 export const deleteListUrl = baseUrl + "remove/list/";
 export const deleteItemUrl = baseUrl + "remove/item/";
 // Export an asynchronous function that makes a GET request & returns response.data
-export async function getAllToDoLists():Promise<ToDoListJson> {
-  try {
-    // axios makes a GET request to the specified URL
-      const response = await axios.get(getListsUrl);
-      // If the response is successful, return the response data
-      if (response.status === 200) {
-          return response.data;
-      // If the response is not successful, throw an error
-      } else {
-          throw new Error(failedToGet);
-      }
-      // We catch the error we threw and return a JSON with an empty list
-  } catch {
-    return {toDoLists:[]};
-  }
-}
+// export async function getAllToDoLists():Promise<ToDoListJson> {
+//   try {
+//     // axios makes a GET request to the specified URL
+//       const response = await axios.get(getListsUrl);
+//       // If the response is successful, return the response data
+//       if (response.status === 200) {
+//           return response.data;
+//       // If the response is not successful, throw an error
+//       } else {
+//           throw new Error(failedToGet);
+//       }
+//       // We catch the error we threw and return a JSON with an empty list
+//   } catch {
+//     return {toDoLists:[]};
+//   }
+// }
 
 export async function postNewToDoList(newToDoList : ToDoList):Promise<string> {
   try {
