@@ -12,13 +12,17 @@ describe("ViewLists", () => {
     const setSelectedList = jest.fn();
     const setLists = jest.fn();
     const deleteMock = jest.fn().mockImplementation(() => Promise.resolve());
-    deleteList(
-      deleteMock,
-      list,
-      lists,
-      setShowInput,
-      setSelectedList,
-      setLists);
+    if (list.id) {
+      const id:number = list.id;
+      deleteList(
+        deleteMock,
+        id,
+        list,
+        lists,
+        setShowInput,
+        setSelectedList,
+        setLists);
+    }
     expect(deleteMock).toHaveBeenCalledWith(list.id);
   });
 });

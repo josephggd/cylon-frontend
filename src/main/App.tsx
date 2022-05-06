@@ -3,7 +3,6 @@ import React, {useEffect} from "react";
 import {blankList, ToDoList} from "../dtos/ToDoList";
 import {ViewLists} from "./components/ViewLists/ViewLists";
 import {EditList} from "./components/EditLists/EditList";
-// import {getAllToDoLists} from "./api/ApiRequests";
 import {handleSubmit} from "./components/EditLists/EditListFunctions";
 
 function App() {
