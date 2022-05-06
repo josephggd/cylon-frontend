@@ -25,13 +25,6 @@
     "eject": "react-scripts eject",
     "test:unit": "react-scripts test --coverage --watchAll=false"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "plugin:cypress/recommended"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
