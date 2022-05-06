@@ -1,6 +1,4 @@
 import {ToDoList} from "../../dtos/ToDoList";
-import {ToDoListJson} from "../../jsons/ToDoListJson";
-import {ToDoItem} from "../../dtos/ToDoItem";
 
 export const failedToPut = "PUT request failed";
 export const failedToPost = "POST request failed";
@@ -14,23 +12,6 @@ export const putListUrl = baseUrl + "update/list";
 export const putItemUrl = baseUrl + "update/item";
 export const deleteListUrl = baseUrl + "remove/list/";
 export const deleteItemUrl = baseUrl + "remove/item/";
-// Export an asynchronous function that makes a GET request & returns response.data
-// export async function getAllToDoLists():Promise<ToDoListJson> {
-//   try {
-//     // axios makes a GET request to the specified URL
-//       const response = await axios.get(getListsUrl);
-//       // If the response is successful, return the response data
-//       if (response.status === 200) {
-//           return response.data;
-//       // If the response is not successful, throw an error
-//       } else {
-//           throw new Error(failedToGet);
-//       }
-//       // We catch the error we threw and return a JSON with an empty list
-//   } catch {
-//     return {toDoLists:[]};
-//   }
-// }
 
 export async function postNewToDoList(newToDoList : ToDoList):Promise<string> {
   try {
@@ -60,7 +41,7 @@ export async function putUpdateToDoList(existingToDoList : ToDoList):Promise<str
 
 export async function deleteToDoList(id : number):Promise<string> {
   try {
-    const response = await fetchRequest(deleteListUrl+id,'DELETE');
+    const response = await fetchRequest(deleteListUrl+id,{}, 'DELETE');
     if (response.status===200){
       return "DELETED";
     } else {
@@ -77,9 +58,9 @@ async function fetchRequest(url = '', data = {}, method= 'POST') {
     // mode: 'cors', // no-cors, *cors, same-origin
     // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
     // credentials: 'same-origin', // include, *same-origin, omit
-    // headers: {
-    //   'Content-Type': 'application/json'
-    // },
+    headers: {
+      'Content-Type': 'application/json'
+    },
     // redirect: 'follow', // manual, *follow, error
     // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(data) // body data type must match "Content-Type" header
