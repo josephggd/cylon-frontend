@@ -3,7 +3,7 @@ import React, {useEffect} from "react";
 import {blankList, ToDoList} from "../dtos/ToDoList";
 import {ViewLists} from "./components/ViewLists/ViewLists";
 import {EditList} from "./components/EditLists/EditList";
-import {getAllToDoLists} from "./api/ApiRequests";
+// import {getAllToDoLists} from "./api/ApiRequests";
 import {handleSubmit} from "./components/EditLists/EditListFunctions";
 
 function App() {
@@ -14,10 +14,12 @@ function App() {
 
   useEffect(() => {
     if (refresh=="initial") {
-      getAllToDoLists().then((response) => {
-        return response.toDoLists;
+      fetch("https://dry-basin-54498.herokuapp.com/data/all").then((response) => {
+        return response.json();
       }).then((toDoLists) => {
-        setLists(toDoLists);
+        if (toDoLists!=null) {
+          setLists(toDoLists.toDoLists);
+        }
       });
       setRefresh("secondary");
     }
