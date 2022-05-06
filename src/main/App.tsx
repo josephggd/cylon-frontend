@@ -43,7 +43,7 @@ function App() {
           />
         </div>
       </header>
-      <a href={"https://github.com/josephggd/hello-cylon"}>Github</a>
+      <a className="GitLink" href={"https://github.com/josephggd/hello-cylon"}>Github</a>
     </div>
   );
 }

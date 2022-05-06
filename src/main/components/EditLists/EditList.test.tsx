@@ -92,10 +92,10 @@ describe('EditItem', () => {
 
     saveButton.click();
     expect(handleSubmit).toHaveBeenCalledWith(
-      refresh,
       testList,
       [],
       setEditedList,
+      refresh,
       setRefresh
     );
   });

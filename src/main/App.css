@@ -21,7 +21,7 @@
 .App-link {
   color: #2a52be ;
 }
-.Git-link {
+a.GitLink {
   color: #2a52be ;
   position: absolute;
   bottom: 0;
