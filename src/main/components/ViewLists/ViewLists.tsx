@@ -27,7 +27,9 @@ export function ViewLists(props:ViewListsProps) {
               data-testid={"delete-list-"+index}
               variant="contained"
               color="error" onClick={()=>{
-              deleteList(deleteToDoList, list, props.lists, props.setShowInput, props.setSelectedList, props.setLists);
+              if (list.id!=null) {
+                deleteList(deleteToDoList, list.id, list, props.lists, props.setShowInput, props.setSelectedList, props.setLists);
+              }
             }
             }>DELETE</Button>
           </li>
