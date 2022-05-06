@@ -4,7 +4,6 @@ import {blankList, ToDoList} from "../dtos/ToDoList";
 import {ViewLists} from "./components/ViewLists/ViewLists";
 import {EditList} from "./components/EditLists/EditList";
 import {getAllToDoLists} from "./api/ApiRequests";
-import styled from "styled-components";
 import {handleSubmit} from "./components/EditLists/EditListFunctions";
 
 function App() {
@@ -23,7 +22,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={"cylon.gif"} alt={"missing"}/>
-        <TwoColumnDiv>
+        <div className={"TwoColumnDiv"}>
           <ViewLists
             lists={lists}
             setLists={setLists}
@@ -42,27 +41,11 @@ function App() {
             setEditedList={setSelectedList}
             handleSubmit={handleSubmit}
           />
-        </TwoColumnDiv>
+        </div>
       </header>
-      <StyledLink href={"https://github.com/josephggd/hello-cylon"}>Github</StyledLink>
+      <a href={"https://github.com/josephggd/hello-cylon"}>Github</a>
     </div>
   );
 }
-
-const TwoColumnDiv = styled.div`
-  background-color: #D3D3D3;
-  border: 1px solid white;
-  border-radius: 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 90%;
-`;
-
-const StyledLink = styled.a`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}`
 
 export default App;

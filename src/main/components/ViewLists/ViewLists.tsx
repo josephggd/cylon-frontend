@@ -1,5 +1,5 @@
+import './ViewLists.css';
 import React from "react";
-import styled from "styled-components";
 import {ViewListsProps} from "./ViewListsProps";
 import Button from '@mui/material/Button';
 import {deleteList} from "./ViewListsFunctions";
@@ -11,7 +11,8 @@ export function ViewLists(props:ViewListsProps) {
       <h3 data-testid={"view-lists-header"}>View Lists</h3>
       <ul>
         {props.lists.length>0 && props.lists.map((list, index) => (
-          <ViewList
+          <li
+            className={"ViewList"}
             key={index}
             data-testid={"view-list-"+index}
             onClick={() => {
@@ -29,27 +30,10 @@ export function ViewLists(props:ViewListsProps) {
               deleteList(deleteToDoList, list, props.lists, props.setShowInput, props.setSelectedList, props.setLists);
             }
             }>DELETE</Button>
-          </ViewList>
+          </li>
         ))}
         {props.lists.length === 0 && <p data-testid={"no-lists"}>No lists to show</p>}
       </ul>
     </div>
   );
 }
-
-const ViewList = styled.li`
-  display: flex;
-  font-size: 20px;
-  border-radius: 5px;
-  padding: 10px;
-  justify-content: space-between;
-  width:380px;
-  height:60px;
-  background-color:#2b2d2f;
-  color:white;
-  :hover {
-    background-color:#3a6fd8;
-    color:#2b2d2f;
-  }
-  overflow:auto;
-`;
