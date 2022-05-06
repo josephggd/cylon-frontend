@@ -3,7 +3,6 @@ import axios from "axios";
 import {
   deleteItemUrl,
   deleteListUrl,
-  deleteToDoItem,
   deleteToDoList,
   failedToDelete,
   failedToPost,
@@ -12,11 +11,9 @@ import {
   getListsUrl,
   postNewItemUrl,
   postNewListUrl,
-  postNewToDoItem,
   postNewToDoList,
   putItemUrl,
   putListUrl,
-  putUpdateToDoItem,
   putUpdateToDoList
 } from "./ApiRequests";
 import {ToDoListJson} from "../../jsons/ToDoListJson";
@@ -62,13 +59,6 @@ describe("successful API requests", () => {
     expect(mockedAxios.post).toHaveBeenCalledWith(postNewListUrl, toDoList);
     expect(returnedData).toBe("SAVED");
   });
-  it("POST item request is made properly", async () => {
-    const mockResponse = { status:200 };
-    mockedAxios.post.mockResolvedValue(mockResponse);
-    const returnedData = await postNewToDoItem(toDoItem);
-    expect(mockedAxios.post).toHaveBeenCalledWith(postNewItemUrl, toDoItem);
-    expect(returnedData).toBe("SAVED");
-  });
   it("PUT request is made properly", async () => {
     const mockResponse = { status:200 };
     mockedAxios.put.mockResolvedValue(mockResponse);
@@ -76,25 +66,11 @@ describe("successful API requests", () => {
     expect(mockedAxios.put).toHaveBeenCalledWith(putListUrl, {...toDoList, id: 1});
     expect(returnedData).toBe("UPDATED");
   });
-  it("PUT item request is made properly", async () => {
-    const mockResponse = { status:200 };
-    mockedAxios.put.mockResolvedValue(mockResponse);
-    const returnedData = await putUpdateToDoItem({...toDoItem, id: 1});
-    expect(mockedAxios.put).toHaveBeenCalledWith(putItemUrl, {...toDoItem, id: 1});
-    expect(returnedData).toBe("UPDATED");
-  });
   it("DELETE LIST request is made properly", async () => {
     const mockResponse = { status:200 };
     mockedAxios.delete.mockResolvedValue(mockResponse);
     const returnedData = await deleteToDoList(1 );
     expect(mockedAxios.delete).toHaveBeenCalledWith(deleteListUrl+"1");
-    expect(returnedData).toBe("DELETED");
-  });
-  it("DELETE ITEM request is made properly", async () => {
-    const mockResponse = { status:200 };
-    mockedAxios.delete.mockResolvedValue(mockResponse);
-    const returnedData = await deleteToDoItem(1 );
-    expect(mockedAxios.delete).toHaveBeenCalledWith(deleteItemUrl+"1");
     expect(returnedData).toBe("DELETED");
   });
 });
@@ -116,13 +92,6 @@ describe("failed API requests", () => {
     expect(mockedAxios.post).toHaveBeenCalledWith(postNewListUrl, toDoList);
     expect(returnedData).toBe(failedToPost);
   });
-  it("POST item request fails", async () => {
-    const mockResponse = { status:400 };
-    mockedAxios.post.mockResolvedValue(mockResponse);
-    const returnedData = await postNewToDoItem(toDoList);
-    expect(mockedAxios.post).toHaveBeenCalledWith(postNewItemUrl, toDoList);
-    expect(returnedData).toBe(failedToPost);
-  });
   it("PUT list request fails", async () => {
     const mockResponse = { status:400 };
     mockedAxios.put.mockResolvedValue(mockResponse);
@@ -130,25 +99,11 @@ describe("failed API requests", () => {
     expect(mockedAxios.put).toHaveBeenCalledWith(putListUrl, {...toDoList, id: 1});
     expect(returnedData).toBe(failedToPut);
   });
-  it("PUT item request fails", async () => {
-    const mockResponse = { status:400 };
-    mockedAxios.put.mockResolvedValue(mockResponse);
-    const returnedData = await putUpdateToDoItem({...toDoItem, id: 1});
-    expect(mockedAxios.put).toHaveBeenCalledWith(putItemUrl, {...toDoItem, id: 1});
-    expect(returnedData).toBe(failedToPut);
-  });
   it("DELETE LIST request fails", async () => {
     const mockResponse = { status:400 };
     mockedAxios.delete.mockResolvedValue(mockResponse);
     const returnedData = await deleteToDoList(1 );
     expect(mockedAxios.delete).toHaveBeenCalledWith(deleteListUrl+"1");
-    expect(returnedData).toBe(failedToDelete);
-  });
-  it("DELETE ITEM request fails", async () => {
-    const mockResponse = { status:400 };
-    mockedAxios.delete.mockResolvedValue(mockResponse);
-    const returnedData = await deleteToDoItem(1 );
-    expect(mockedAxios.delete).toHaveBeenCalledWith(deleteItemUrl+"1");
     expect(returnedData).toBe(failedToDelete);
   });
 });
