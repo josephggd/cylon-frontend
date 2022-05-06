@@ -1,10 +1,10 @@
-import {blankList, testList} from "../../../dtos/ToDoList";
+import {blankList} from "../../../dtos/ToDoList";
 import {testItems} from "../../../dtos/ToDoItem";
 import React from "react";
 import {handleSubmit} from "./EditListFunctions";
 
 describe('EditItem', () => {
-  // const submitList = jest.fn().mockImplementation(() => Promise.resolve());
+  const refresh = false;
   const setEditedList = jest.fn();
   const setRefresh = jest.fn();
   // test('runs handleSubmit', () => {
@@ -21,6 +21,7 @@ describe('EditItem', () => {
       blankList,
       testItems,
       setEditedList,
+      refresh,
       setRefresh);
     expect(setEditedList).not.toHaveBeenCalledWith(blankList);
     expect(setRefresh).not.toHaveBeenCalledWith(true);

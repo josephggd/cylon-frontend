@@ -73,6 +73,7 @@ export function EditList(props:EditListProps){
               props.editedList,
               props.editedList.items,
               props.setEditedList,
+              props.refresh,
               props.setRefresh
           )}>Save List</Button>
         </div>}

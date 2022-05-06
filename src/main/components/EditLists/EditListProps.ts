@@ -14,6 +14,7 @@ export interface EditListProps {
     toDoList:ToDoList,
     toDoItems:ToDoItem[],
     setEditedList:(toDoList:ToDoList) => void,
+    refresh:boolean,
     setRefresh:(refresh:boolean) => void
   ) => void;
 }

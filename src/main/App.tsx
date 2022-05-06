@@ -14,12 +14,9 @@ function App() {
   const [showInput, setShowInput] = React.useState(false);
 
   useEffect(() => {
-    if (refresh) {
-      getAllToDoLists().then((response) => {
-        return response.toDoLists;
-      }).then(setLists);
-      setRefresh(false);
-    }
+    getAllToDoLists().then((response) => {
+      return response.toDoLists;
+    }).then(setLists);
   }, [refresh]);
 
   return (

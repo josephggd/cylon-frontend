@@ -6,6 +6,7 @@ export function handleSubmit(
   toDoList:ToDoList,
   toDoItems:ToDoItem[],
   setEditedList:(toDoList:ToDoList) => void,
+  refresh:boolean,
   setRefresh:(refresh:boolean) => void
 ) {
   const submitList = toDoList.id!=null ? putUpdateToDoList : postNewToDoList;
@@ -13,7 +14,7 @@ export function handleSubmit(
     const newList:ToDoList = {...toDoList, items: toDoItems};
     submitList(newList).then(() => {
       setEditedList(blankList);
-      setRefresh(true);
+      setRefresh(!refresh);
     });
   }
 }

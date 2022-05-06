@@ -11,7 +11,7 @@ describe('EditItem', () => {
   const setShowInput = jest.fn();
   const setEditedList = jest.fn();
   const handleSubmit = jest.fn();
-  const submitList = jest.fn();
+  const refresh = false;
   test('renders & shows/hides', () => {
     render(<EditList
       // submitList={submitList}
@@ -92,6 +92,7 @@ describe('EditItem', () => {
 
     saveButton.click();
     expect(handleSubmit).toHaveBeenCalledWith(
+      refresh,
       testList,
       [],
       setEditedList,
